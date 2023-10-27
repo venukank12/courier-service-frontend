@@ -10,11 +10,11 @@ import { authService } from "../services/authService";
 const authPersistConfig = {
   key: "courier_life_web_2023_v1",
   storage: sessionStorage,
-  whitelist:['auth']
+  whitelist:[authReducer.name]
 };
 
 const rootReducer = combineReducers({
-  auth: authReducer,
+  [authReducer.name]: authReducer,
   [authService.reducerPath]: authService.reducer,
 });
 

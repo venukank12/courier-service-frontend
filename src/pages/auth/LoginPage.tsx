@@ -12,7 +12,7 @@ const LoginPage = ()=>{
     const [handleLogin,{error,isSuccess,data}] = useLoginMutation({fixedCacheKey:'auth-data'});
   
     
-    useEffect(()=>{isSuccess && dispatch(login(data?.data))},[isSuccess,data?.data,dispatch]);
+    useEffect(()=>{isSuccess && dispatch(login({token:data?.token,user:data?.user}))},[isSuccess,data,dispatch]);
   
     const formik = useFormik({
       initialValues: {
@@ -24,7 +24,7 @@ const LoginPage = ()=>{
     });
   
     
-    return <LoginForm {...formik} message={error?.data?.error}/>;
+    return <LoginForm {...formik} message={error?.data?.message}/>;
 }
 
 export default LoginPage;

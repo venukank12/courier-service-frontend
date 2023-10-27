@@ -11,7 +11,8 @@ const ErrorMessage: React.FC<ErrorMessageProps> = ({ message }) => (
     my={10}
     p="7px 10px"
     sx={{
-      backgroundColor: (theme) => theme.palette.error.light,
+        boxSizing:'border-box',
+      backgroundColor: (theme) => theme.palette.error.main+"30",
       opacity: Boolean(message) ? 1 : 0,
       borderRadius: "8px",
     }}
