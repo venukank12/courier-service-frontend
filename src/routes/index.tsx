@@ -1,10 +1,10 @@
-import Private from "./";
+import { useSelector } from "react-redux";
+import Private from "./Private";
 import Public from "./Public";
-import { useLoginMutation } from "../services/authService";
 
 const Routes = () => {
-  const { data } = useLoginMutation({ fixedCacheKey: "auth-data" })[1];
-  return data?.data?.token ? <Private /> : <Public />;
+  const token = useSelector((state: any) => state?.auth?.token);
+  return token ? <Private /> : <Public />;
 };
 
 export default Routes;

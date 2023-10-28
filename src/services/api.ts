@@ -9,6 +9,7 @@ import {
 import ApiSlugs from "../utils/dataTypes/ApiSlugs";
   
   const query = fetchBaseQuery({
+    baseUrl: "",
     prepareHeaders: (headers, { getState }) => {
       const token = (getState() as any)?.auth?.token;
       token && headers.set("authorization", `Bearer ${token}`);
@@ -33,7 +34,7 @@ import ApiSlugs from "../utils/dataTypes/ApiSlugs";
       );
       if (refreshResult.data) {
         // store the new token
-        api.dispatch(login((refreshResult.data as any)?.data));
+        api.dispatch(login({token:(refreshResult.data as any)?.token,user:(refreshResult.data as any)?.user}));
         // retry the initial query
         result = await query(args, api, extraOptions);
       } 

@@ -1,4 +1,4 @@
-import {StrictMode, Suspense } from "react";
+import { StrictMode, Suspense } from "react";
 import ReactDOM from "react-dom/client";
 import "./index.css";
 import App from "./App";
@@ -15,14 +15,14 @@ const root = ReactDOM.createRoot(
 
 root.render(
   <StrictMode>
-    <Provider store={store}>
-      <PersistGate loading={<SplashScreen/>} persistor={persistedStore}>
-        <ThemeProvider theme={theme}>
-          <Suspense fallback={<SplashScreen/>}>
-          <App />
+    <ThemeProvider theme={theme}>
+      <Provider store={store}>
+        <PersistGate loading={<SplashScreen />} persistor={persistedStore}>
+          <Suspense fallback={<SplashScreen />}>
+            <App />
           </Suspense>
-        </ThemeProvider>
-      </PersistGate>
-    </Provider>
+        </PersistGate>
+      </Provider>
+    </ThemeProvider>
   </StrictMode>
 );

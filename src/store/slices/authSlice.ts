@@ -1,7 +1,7 @@
 import { createSlice } from "@reduxjs/toolkit";
 
 const authSlice = createSlice({
-  name: "temp-auth",
+  name: "auth",
   initialState: { token: null, user: {} },
   reducers: {
     login: (_, { payload }) => payload,

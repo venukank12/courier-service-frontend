@@ -29,17 +29,17 @@ const Auth: React.FC = () => {
           backgroundPosition: "center",
           backgroundRepeat: "no-repeat",
         }}
-        p={{ xs: 20, sm: 50 }}
+        p={{ xs: 2, sm: 5 }}
         display={{ xs: "none", md: "block" }}
       >
         <Box display="flex" alignItems="center">
           <DiamondIcon fontSize="large" color="primary" />
-          <Typography ml={6} variant="h5">
+          <Typography ml={1} variant="h5">
             Courier Life
           </Typography>
         </Box>
       </Grid>
-      <Grid item xs={12} md={6}>
+      <Grid item xs={12} md={6} maxHeight='100vh' overflow='auto'>
         <Outlet/>
       </Grid>
     </Grid>

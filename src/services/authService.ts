@@ -4,7 +4,7 @@ import { EndpointBuilder } from "@reduxjs/toolkit/dist/query/endpointDefinitions
 import ApiSlugs from "../utils/dataTypes/ApiSlugs";
 
 export const authService = createApi({
-  reducerPath: "auth",
+  reducerPath: "authService",
   baseQuery: baseQuery,
   endpoints: (builder: EndpointBuilder<any, any, any>) => ({
     login: builder.mutation({

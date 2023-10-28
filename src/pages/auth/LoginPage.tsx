@@ -10,8 +10,7 @@ const LoginPage = ()=>{
     const dispatch = useDispatch();
     
     const [handleLogin,{error,isSuccess,data}] = useLoginMutation({fixedCacheKey:'auth-data'});
-  
-    
+      
     useEffect(()=>{isSuccess && dispatch(login({token:data?.token,user:data?.user}))},[isSuccess,data,dispatch]);
   
     const formik = useFormik({

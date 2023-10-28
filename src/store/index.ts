@@ -6,16 +6,18 @@ import thunk from "redux-thunk";
 import { setupListeners } from "@reduxjs/toolkit/query";
 import authReducer from "./slices/authSlice";
 import { authService } from "../services/authService";
+import { shipmentService } from "../services/shipmentService";
 
 const authPersistConfig = {
   key: "courier_life_web_2023_v1",
   storage: sessionStorage,
-  whitelist:[authReducer.name]
+  whitelist:["auth"]
 };
 
 const rootReducer = combineReducers({
-  [authReducer.name]: authReducer,
+  'auth': authReducer,
   [authService.reducerPath]: authService.reducer,
+  [shipmentService.reducerPath]: shipmentService.reducer,
 });
 
 const persistedReducer = persistReducer(authPersistConfig, rootReducer)
@@ -28,6 +30,7 @@ const store = configureStore({
     }).concat([
       thunk,
       authService.middleware,
+      shipmentService.middleware,
     ] as any)
 });
 

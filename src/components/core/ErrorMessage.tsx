@@ -8,7 +8,7 @@ const ErrorMessage: React.FC<ErrorMessageProps> = ({ message }) => (
   <Box
     display="flex"
     width="100%"
-    my={10}
+    my={1}
     p="7px 10px"
     sx={{
         boxSizing:'border-box',

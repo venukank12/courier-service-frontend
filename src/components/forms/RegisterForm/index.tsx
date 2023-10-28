@@ -1,11 +1,11 @@
 import { TextField, Box, Typography } from "@mui/material";
 import { LoadingButton } from "@mui/lab";
 import ErrorMessage from "../../core/ErrorMessage";
-import LoginFormInputs from "../../../utils/dataTypes/LoginFormInputs";
 import DiamondIcon from "@mui/icons-material/Diamond";
 import UrlSlugs from "../../../utils/dataTypes/UrlSlugs";
+import RegisterFormInputs from "../../../utils/dataTypes/RegisterFormInputs";
 
-const LoginForm = ({
+const RegisterForm = ({
   message,
   values,
   errors,
@@ -14,7 +14,7 @@ const LoginForm = ({
   handleChange,
   handleSubmit,
   isSubmitting,
-}: LoginFormInputs) => {
+}: RegisterFormInputs) => {
   return (
     <Box
       component="form"
@@ -35,7 +35,7 @@ const LoginForm = ({
       </Box>
 
       <Typography variant="h4" mt={3} align="center">
-        Log in to your account
+        Register with us
       </Typography>
       <Typography
         variant="body1"
@@ -44,9 +44,35 @@ const LoginForm = ({
         color="text.secondary"
         align="center"
       >
-        Welcome back! please enter your credentials
+        Please create your account by providing the followings,
       </Typography>
       <TextField
+        fullWidth
+        label="First Name"
+        placeholder="Venukan"
+        disabled={isSubmitting}
+        name="firstName"
+        value={values.firstName}
+        onChange={handleChange}
+        onBlur={handleBlur}
+        error={touched.firstName && Boolean(errors.firstName)}
+        helperText={touched.firstName && errors.firstName}
+      />
+      <TextField
+        sx={{ mt: 2 }}
+        fullWidth
+        label="Last Name"
+        placeholder="Kanthasamy"
+        disabled={isSubmitting}
+        name="lastName"
+        value={values.lastName}
+        onChange={handleChange}
+        onBlur={handleBlur}
+        error={touched.lastName && Boolean(errors.lastName)}
+        helperText={touched.lastName && errors.lastName}
+      />
+      <TextField
+        sx={{ mt: 2 }}
         fullWidth
         label="Email"
         placeholder="venukan@courierlife.com"
@@ -74,6 +100,32 @@ const LoginForm = ({
         helperText={touched.password && errors.password}
       />
 
+      <TextField
+        sx={{ mt: 2 }}
+        fullWidth
+        label="Address"
+        placeholder="Mulliwayalai, Mullaitivu, Sri Lanka"
+        disabled={isSubmitting}
+        name="address"
+        value={values.address}
+        onChange={handleChange}
+        onBlur={handleBlur}
+        error={touched.address && Boolean(errors.address)}
+        helperText={touched.address && errors.address}
+      />
+      <TextField
+        sx={{ mt: 2 }}
+        fullWidth
+        label="Phone Number"
+        placeholder="94770337024"
+        disabled={isSubmitting}
+        name="phoneNumber"
+        value={values.phoneNumber}
+        onChange={handleChange}
+        onBlur={handleBlur}
+        error={touched.phoneNumber && Boolean(errors.phoneNumber)}
+        helperText={touched.phoneNumber && errors.phoneNumber}
+      />
       <ErrorMessage message={message} />
 
       <LoadingButton
@@ -84,13 +136,13 @@ const LoginForm = ({
         type="submit"
         variant="contained"
       >
-        Sign In
+        Register
       </LoadingButton>
       <Typography variant="subtitle1" mt={0.25} align="center">
-        Don't have account? <a href={UrlSlugs.REGISTER}>Register</a>.
+        Already have account? <a href={UrlSlugs.LOGIN}>Sign In</a>.
       </Typography>
     </Box>
   );
 };
 
-export default LoginForm;
+export default RegisterForm;

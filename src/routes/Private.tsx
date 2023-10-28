@@ -1,20 +1,19 @@
 import { lazy } from "react";
 import { useRoutes, Navigate } from "react-router-dom";
 import UrlSlugs from "../utils/dataTypes/UrlSlugs";
-import AuthLayout from "../layouts/Auth";
+import DashboardLayout from "../layouts/Dashboard";
 
 // pages
-const Login = lazy(()=>import("../pages/auth/LoginPage"));
+const Dashboard = lazy(()=>import("../pages/dashboard"));
 
 const Private = () =>
   useRoutes([
     {
-      element: <AuthLayout />,
+      element: <DashboardLayout />,
       children: [
-        { path: UrlSlugs.LOGIN, element: <Login /> },
-        { path: UrlSlugs.REGISTER, element: <Login /> },
-        { path: "/", element: <Navigate to={UrlSlugs.LOGIN} replace /> },
-        { path: "*", element: <Navigate to={UrlSlugs.LOGIN} replace /> },
+        { path: UrlSlugs.HOME, element: <Dashboard /> },
+        { path: "/", element: <Navigate to={UrlSlugs.HOME} replace /> },
+        { path: "*", element: <Navigate to={UrlSlugs.HOME} replace /> },
       ],
     },
   ]);
